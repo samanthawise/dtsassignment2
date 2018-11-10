@@ -1,5 +1,6 @@
 %Import the original classification for check the accuracy. 
 %As the part2ofwholedata
+%kddcup is a dataset like ["normal.", "normal.", "normal.", "smurf.", ...]'
 label=zeros(length(kddcup),1);
 label(find(kddcup=="normal."))=1;
 label(find(kddcup=="smurf."))=2;
