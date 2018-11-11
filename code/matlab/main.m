@@ -60,17 +60,10 @@ for ll = 1:length(item)
     parfor j = s:s+len
         distance = [];
         for i = 1:23
-            %temp = num2str(i);
-            %temp2 = num2str(j);
             distance = [distance min(dist(K_test(j,[1:41]),C{i}'))];
-            %eval(['distance = [distance min(dist(K(' temp2 ',:),C_' temp '''))];'])
         end
         [a,b] = sort(distance);
         Bag = [Bag b(1)];
-        %if mod(j,10000)
-        %else
-        %    fprintf("1");
-        %end
     end
     Whole_Bag{ll}=Bag;
     ACCU=[ACCU length(find(K_test([s:s+len],42)'==Bag))/(len+1)]
@@ -78,3 +71,15 @@ for ll = 1:length(item)
 end
 sum(ACCU)/length(ACCU)
 plot(item([1:10]),ACCU,'*-')
+accuracy = ACCU;
+accuracy = [ACCU 0.9858 0.9858]
+plot(item, accuracy, '*')
+x=item;
+y=accuracy;
+EXPR = {'x','1/x','1'};
+p=fittype(EXPR)
+f=fit(x',y',p)
+plot(f,x',y');
+xlabel('Size of testing data')
+ylabel('Accuracy')
+print -djpeg '\\ads.bris.ac.uk\filestore\myfiles\StudentPG1\mw18386\Downloads\Data Science\visualize\400000\increasingtestdata.jpg' -r800
