@@ -1,4 +1,4 @@
-%add kmeans output
+%add training data then add kmeans output(need to test the additional data see if the accuracy will reduce)
 for i = 1:3
     a{i}=K1(find(K_train(:,42)==i),:);
     [I,C{i}]=kmeans(a{i},100);
