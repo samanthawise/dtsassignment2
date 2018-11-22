@@ -72,7 +72,6 @@ end
 sum(ACCU)/length(ACCU)
 plot(item([1:10]),ACCU,'*-')
 accuracy = ACCU;
-accuracy = [ACCU 0.9858 0.9858]
 plot(item, accuracy, '*')
 x=item;
 y=accuracy;
